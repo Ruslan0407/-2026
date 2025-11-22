@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поздравление от Деда Мороза</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://i.postimg.cc/hv0F0GRt/fonwall-ru-new-year-clock-owl.jpg') no-repeat  center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        h1 {
+            color: #ff0000;
+        }
+        .santa {
+            font-size: 100px;
+            margin: 20px;
+        }
+        .message {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            animation: fall linear infinite;
+            color: #fff;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="santa">🎅</div>
+        <h1>С Новым Годом!</h1>
+        <div class="message">
+            Дорогой друг!<br>
+            Пусть в новом году сбудутся все твои мечты!<br>
+            Желаю счастья, здоровья и удачи!<br>
+            Твой Дед Мороз.
+        </div>
+    </div>
+
+    <script>
+        // Создаем снежинки
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.innerHTML = '❄';
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // от 2 до 5 секунд
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            document.body.appendChild(snowflake);
+
+            // Удаляем снежинку после анимации
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        // Создаем снежинки каждые 100 миллисекунд
+        setInterval(createSnowflake, 100);
+    </script>
+</body>
+</html>
