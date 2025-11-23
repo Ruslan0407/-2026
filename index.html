@@ -2,89 +2,41 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Новогоднее поздравление от Деда Мороза</title>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
     body {
+        margin: 0;
         font-family: 'Arial', sans-serif;
         color: #228B22;
         text-align: center;
-        padding: 0;
-        overflow-x: hidden;
-        min-height: 100vh;
-        /* Фон по умолчанию для ПК */
-        background: url('https://images.unsplash.com/photo-1545420333-23a22b00b8ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
-        background-size: cover;
-        position: relative;
-    }
-
-    /* Для телефонов - вертикально ориентированное изображение */
-    @media (max-width: 768px) {
-        body {
-            background: url('https://images.unsplash.com/photo-1577720643278-d4cec1c4e8cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80') no-repeat center center fixed;
-            background-size: cover;
-        }
-    }
-
-    /* Для очень маленьких экранов */
-    @media (max-width: 480px) {
-        body {
-            background: url('https://images.unsplash.com/photo-1577720643278-d4cec1c4e8cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80') no-repeat center center fixed;
-            background-size: cover;
-        }
+      padding: 0;
+   background: no-repeat center url(duck.jpg);
+   background-size: cover;
+      overflow: hidden;
     }
 
     h1 {
         margin-top: 40px;
         font-size: 48px;
-        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
-        padding: 0 15px;
+        text-shadow: 3px 3px 8px black;
     }
 
     .audio-box {
-        margin: 50px auto;
+        margin-top: 50px;
         background: rgba(0, 0, 0, 0.5);
         padding: 25px;
         width: 80%;
         max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
         border-radius: 15px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        box-shadow: 0 0 15px black;
     }
 
     audio {
         width: 100%;
         margin-top: 15px;
-    }
-
-    /* Адаптивность для мобильных устройств */
-    @media (max-width: 768px) {
-        h1 {
-            font-size: 36px;
-            margin-top: 20px;
-        }
-        
-        .audio-box {
-            width: 90%;
-            padding: 20px;
-            margin-top: 30px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        h1 {
-            font-size: 28px;
-        }
-        
-        .audio-box {
-            padding: 15px;
-        }
     }
 
     /* ---- Snow Animation ---- */
@@ -95,7 +47,6 @@
         font-size: 20px;
         opacity: 0.8;
         animation: fall linear infinite;
-        z-index: -1;
     }
 
     @keyframes fall {
@@ -112,13 +63,13 @@
 <div class="audio-box">
     <h2>Голосовое поздравление от Деда Мороза 🎧</h2>
     <audio controls>
-        <!-- Замените на свой аудиофайл -->
         <source src="voice.mp3" type="audio/mpeg">
         Ваш браузер не поддерживает аудио.
     </audio>
 </div>
 
 <script>
+
     // Снег
     function createSnowflake() {
         const snow = document.createElement("div");
@@ -132,21 +83,6 @@
         setTimeout(() => snow.remove(), 10000);
     }
     setInterval(createSnowflake, 150);
-
-    // Адаптация количества снежинок в зависимости от размера экрана
-    function adjustSnowfall() {
-        const snowflakes = document.querySelectorAll('.snowflake');
-        const targetCount = window.innerWidth < 768 ? 30 : 50;
-        
-        if (snowflakes.length > targetCount) {
-            for (let i = 0; i < snowflakes.length - targetCount; i++) {
-                if (snowflakes[i]) snowflakes[i].remove();
-            }
-        }
-    }
-
-    // Вызываем при изменении размера окна
-    window.addEventListener('resize', adjustSnowfall);
 </script>
 
 </body>
