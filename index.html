@@ -1,80 +1,89 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поздравление от Деда Мороза</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: url('https://i.postimg.cc/hv0F0GRt/fonwall-ru-new-year-clock-owl.jpg') no-repeat  center fixed;
-            background-size: cover;
-            color: #fff;
-            text-align: center;
-            padding: 50px;
-        }
-        .container {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 15px;
-            display: inline-block;
-        }
-        h1 {
-            color: #ff0000;
-        }
-        .santa {
-            font-size: 100px;
-            margin: 20px;
-        }
-        .message {
-            font-size: 24px;
-            margin: 20px 0;
-        }
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            animation: fall linear infinite;
-            color: #fff;
-        }
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Новогоднее поздравление от Деда Мороза</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        color: #228B22;
+        text-align: center;
+      padding: 0;
+   background: url(duck.jpg);
+   background-size: cover;
+      overflow: hidden;
+    }
+
+    h1 {
+        margin-top: 40px;
+        font-size: 48px;
+        text-shadow: 3px 3px 8px black;
+    }
+
+    .audio-box {
+        margin-top: 50px;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 25px;
+        width: 80%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 15px;
+        box-shadow: 0 0 15px black;
+    }
+
+    audio {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    /* ---- Snow Animation ---- */
+    .snowflake {
+        position: fixed;
+        top: -10px;
+        color: white;
+        font-size: 20px;
+        opacity: 0.8;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        from { transform: translateY(-10px); }
+        to   { transform: translateY(110vh); }
+    }
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="santa">🎅</div>
-        <h1>С Новым Годом!</h1>
-        <div class="message">
-            Дорогой друг!<br>
-            Пусть в новом году сбудутся все твои мечты!<br>
-            Желаю счастья, здоровья и удачи!<br>
-            Твой Дед Мороз.
-        </div>
-    </div>
 
-    <script>
-        // Создаем снежинки
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.innerHTML = '❄';
-            snowflake.classList.add('snowflake');
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // от 2 до 5 секунд
-            snowflake.style.opacity = Math.random();
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-            document.body.appendChild(snowflake);
+<h1>🎄 С Новым годом! 🎅</h1>
 
-            // Удаляем снежинку после анимации
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
-        }
+<div class="audio-box">
+    <h2>Голосовое поздравление от Деда Мороза 🎧</h2>
+    <audio controls>
+        <source src="voice.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+</div>
 
-        // Создаем снежинки каждые 100 миллисекунд
-        setInterval(createSnowflake, 100);
-    </script>
+<script>
+
+    // Снег
+    function createSnowflake() {
+        const snow = document.createElement("div");
+        snow.classList.add("snowflake");
+        snow.textContent = "❄";
+        snow.style.left = Math.random() * window.innerWidth + "px";
+        snow.style.animationDuration = (Math.random() * 5 + 5) + "s";
+        snow.style.fontSize = (Math.random() * 10 + 10) + "px";
+        document.body.appendChild(snow);
+
+        setTimeout(() => snow.remove(), 10000);
+    }
+    setInterval(createSnowflake, 150);
+</script>
+
 </body>
 </html>
